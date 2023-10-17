@@ -32,4 +32,17 @@ hold on;
 plot(t_sampled, x_sampled, 'o', 'LineWidth', 2);
 legend('Original signal', 'Sampled signal');
 
+%% Homework1_6_2
 
+fs_low = 5000;
+prc_rate = 100;
+t1 = -0.004:1 / (prc_rate * fs_low):0.004;
+x1 = zeros(1, (length(t1) + 1) / 2);
+x1(1:prc_rate:end) = x_sampled;
+
+h = sinc(fs_low, t1);
+y = conv(x1, h, 'same');
+
+plot(t1((length(t1) + 1) / 2:end), y, 'LineWidth', 1.5);
+
+legend('Original signal', 'Sampled signal', 'Reconstructed signal')
