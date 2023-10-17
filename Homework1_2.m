@@ -60,6 +60,7 @@ x_t1 = (sinc (5 * t_1)) .^ 2;
 x_t2 = (sinc (5 * t_2)) .^ 2;
 x_t3 = (sinc (5 * t_3)) .^ 2;
 x_t4 = (sinc (5 * t_4)) .^ 2;
+
 figure('Name', 'Original Signal');
 subplot(2, 1, 1)
 plot(t, abs(fftshift(fft(x_t))), 'LineWidth', 2);
@@ -115,6 +116,77 @@ grid on;
 
 subplot(2, 1, 2)
 plot(t_4, abs(fftshift(fft(x_t4))), 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('sampled signal');
+grid on;
+
+%% Homework1_8
+N = 256;
+t = -5:1 / N:5;
+t1 = -5:1 / (2 * N):5;
+t2 = -5:3 / (2 * N):5;
+t3 = -5:3 / N:5;
+
+xt = sinc(2 * t);
+xt1 = sinc(2 * t1);
+xt2 = sinc(2 * t2);
+xt3 = sinc(2 * t3);
+figure('Name', 'Original Signal');
+subplot(2, 1, 1)
+plot(t, xt, 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('Original signal');
+grid on;
+
+subplot(2, 1, 2)
+plot(t, abs(fftshift(fft(xt))), 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('sampled signal');
+grid on;
+
+figure('Name', 'Original Signal');
+subplot(2, 1, 1)
+plot(t1, xt1, 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('Original signal');
+grid on;
+
+subplot(2, 1, 2)
+plot(t1, abs(fftshift(fft(xt1))), 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('sampled signal');
+grid on;
+
+figure('Name', 'Original Signal');
+subplot(2, 1, 1)
+plot(t2, xt2, 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('Original signal');
+grid on;
+
+subplot(2, 1, 2)
+plot(t2, abs(fftshift(fft(xt2))), 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('sampled signal');
+grid on;
+
+figure('Name', 'Original Signal');
+subplot(2, 1, 1)
+plot(t3, xt3, 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('Original signal');
+grid on;
+
+subplot(2, 1, 2)
+plot(t3, abs(fftshift(fft(xt3))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
 title('sampled signal');
