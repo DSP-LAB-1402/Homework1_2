@@ -10,40 +10,65 @@ Clear all;
 close all;
 clc;
 
-%% Homework1_6_1
+%% Homework1_6
+% In this task we want to show what would be sampled signal and
+% how different it is with original signal
+%
+% Declaring variables
 fs = 50000;
 t = 0:1 / fs:0.004;
 f1 = 1000;
 f2 = 4000;
 f3 = 6000;
-x_original = cos(2 * pi * f1 * t) + cos(2 * pi * f2 * t) + cos(2 * pi * f3 * t);
-
 fs_low = 5000;
 t_sampled = 0:1 / fs_low:0.004;
+%%%
+% Now we declare signals need to be plootted
+x_original = cos(2 * pi * f1 * t) + cos(2 * pi * f2 * t) + cos(2 * pi * f3 * t);
 x_sampled = cos(2 * pi * f1 * t_sampled) + cos(2 * pi * f2 * t_sampled) + cos(2 * pi * f3 * t_sampled);
-
+%%%
+% Now we plot signals for the first part
 figure('Name', 'Aliasing in the time domain');
 plot(t, x_original, 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Original signal');
+title('Signals');
 grid on;
 hold on;
 plot(t_sampled, x_sampled, 'o', 'LineWidth', 2);
 legend('Original signal', 'Sampled signal');
-
+%%%
 % part 2
+% Here we want to reconstruct original signals, with a specific frequency
+% Now we declare variables for second part of this task
+
 prc_rate = 100;
 t1 = -0.004:1 / (prc_rate * fs_low):0.004;
 x1 = zeros(1, (length(t1) + 1) / 2);
 x1(1:prc_rate:end) = x_sampled;
-
+%%%
+% Here we declare signals need to be plotted
 h = sinc(fs_low * t1);
 y = conv(x1, h, 'same');
-
+%%%
+% Now we plot original signal, Sampled signal and reconstructed signal
+figure('Name', 'Aliasing in the time domain');
+plot(t, x_original, 'LineWidth', 2);
+xlabel('Time (s)');
+ylabel('Amplitude');
+title('Signals');
+grid on;
+hold on;
+plot(t_sampled, x_sampled, 'o', 'LineWidth', 2);
+hold on;
 plot(t1((length(t1) + 1) / 2:end), y, 'LineWidth', 1.5);
-
 legend('Original signal', 'Sampled signal', 'Reconstructed signal')
+%%%
+% Based on sampled frequency we would know that frequencies which doesn't satisfy nyquist law
+% can't be plotted. so only cosine with 1k hertz frquency can be plotted
+
+% if we don't have ideal filter, then the reconstructed signal can't be the same as original signal
+
 %% Homework1_7
 
 t = -5:0.01:5;
@@ -122,6 +147,7 @@ title('sampled signal');
 grid on;
 
 %% Homework1_8
+
 N = 256;
 t = -5:1 / N:5;
 t1 = -5:1 / (2 * N):5;
