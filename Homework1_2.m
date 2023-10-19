@@ -70,7 +70,9 @@ legend('Original signal', 'Sampled signal', 'Reconstructed signal')
 % if we don't have ideal filter, then the reconstructed signal can't be the same as original signal
 
 %% Homework1_7
-
+% Here in this task we want to show if we sample signals, what would happen
+% to their frquency spectrum
+% Now we declare variables needed for plot
 t = -5:0.01:5;
 f1 = 4;
 f2 = 5;
@@ -80,72 +82,81 @@ t_1 = -5:1 / f1:5;
 t_2 = -5:1 / f2:5;
 t_3 = -5:1 / f3:5;
 t_4 = -5:1 / f4:5;
+%%%
+% Now we declare signals needed for plot
 x_t = (sinc (5 * t)) .^ 2;
 x_t1 = (sinc (5 * t_1)) .^ 2;
 x_t2 = (sinc (5 * t_2)) .^ 2;
 x_t3 = (sinc (5 * t_3)) .^ 2;
 x_t4 = (sinc (5 * t_4)) .^ 2;
 
-figure('Name', 'Original Signal');
+figure('Name', 'Fft of signals');
 subplot(2, 1, 1)
 plot(t, abs(fftshift(fft(x_t))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Original signal');
+title('Fft of oiginal signal');
 grid on;
 
 subplot(2, 1, 2)
 plot(t_1, abs(fftshift(fft(x_t1))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('sampled signal');
+title('Fft of sampled signal1');
 grid on;
 
-figure('Name', 'Original Signal');
+figure('Name', 'Fft of signals');
 subplot(2, 1, 1)
 plot(t, abs(fftshift(fft(x_t))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Original signal');
+title('Fft of original signal');
 grid on;
 
 subplot(2, 1, 2)
 plot(t_2, abs(fftshift(fft(x_t2))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('sampled signal');
+title('Fft of sampled signal2');
 grid on;
 
-figure('Name', 'Original Signal');
+figure('Name', 'Fft of signals');
 subplot(2, 1, 1)
 plot(t, abs(fftshift(fft(x_t))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Original signal');
+title('Fft of original signal');
 grid on;
 
 subplot(2, 1, 2)
 plot(t_3, abs(fftshift(fft(x_t3))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('sampled signal');
+title('Fft of sampled signal3');
 grid on;
 
-figure('Name', 'Original Signal');
+figure('Name', 'Fft of signals');
 subplot(2, 1, 1)
 plot(t, abs(fftshift(fft(x_t))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('Original signal');
+title('Fft of original signal');
 grid on;
 
 subplot(2, 1, 2)
 plot(t_4, abs(fftshift(fft(x_t4))), 'LineWidth', 2);
 xlabel('Time (s)');
 ylabel('Amplitude');
-title('sampled signal');
+title('Fft of sampled signal4');
 grid on;
-
+%%%
+% Based on what we saw, Signal3 and Signal4 had no problem in terms of aliasing
+% of course based on Nyquist law, signal3 which had 2B=fs may have problems if we had sinusodial signals.
+% So we prefer to have 2B > fs.
+% For signal2 since Nyquist law isn't satisfied we have aliasing , and it makes sinc to be
+% integer. and we know it is 0 if sinc becomes inteer (except in 0). so we see a DC signal.
+% For signal1 Nyquist law isn't satisfied so we see sum of DC and tip of the signal.
+% In conclusion, if we don't satisfy Nyquist law, then we see aliasing if frequency spectrum.
 %% Homework1_8
 
 N = 256;
