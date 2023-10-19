@@ -1,8 +1,9 @@
 %% *Homework1_2*
 
 %% Programmers
-
+%%%
 % Mohammad Mahdi Elyasi - 9823007
+%
 % Moein Nasiri - 9823093
 
 %% Clear the Workspace
@@ -14,7 +15,7 @@ clc;
 % In this task we want to show what would be sampled signal and
 % how different it is with original signal
 %
-% Declaring variables
+% Declaring variables:
 fs = 50000;
 t = 0:1 / fs:0.004;
 f1 = 1000;
@@ -39,6 +40,7 @@ plot(t_sampled, x_sampled, 'o', 'LineWidth', 2);
 legend('Original signal', 'Sampled signal');
 %%%
 % part 2
+%
 % Here we want to reconstruct original signals, with a specific frequency
 % Now we declare variables for second part of this task
 
@@ -64,14 +66,14 @@ hold on;
 plot(t1((length(t1) + 1) / 2:end), y, 'LineWidth', 1.5);
 legend('Original signal', 'Sampled signal', 'Reconstructed signal')
 %%%
-% Based on sampled frequency we would know that frequencies which doesn't satisfy nyquist law
+% * Based on sampled frequency we would know that frequencies which doesn't satisfy nyquist law
 % can't be plotted. so only cosine with 1k hertz frquency can be plotted
-
-% if we don't have ideal filter, then the reconstructed signal can't be the same as original signal
+%
+% * If we don't have ideal filter, then the reconstructed signal can't be the same as original signal
 
 %% Homework1_7
 % Here in this task we want to show if we sample signals, what would happen
-% to their frquency spectrum
+% to their frequency spectrum
 % Now we declare variables needed for plot
 t = -5:0.01:5;
 f1 = 4;
@@ -150,13 +152,13 @@ ylabel('Amplitude');
 title('Fft of sampled signal4');
 grid on;
 %%%
-% Based on what we saw, Signal3 and Signal4 had no problem in terms of aliasing
+% * Based on what we saw, Signal3 and Signal4 had no problem in terms of aliasing
 % of course based on Nyquist law, signal3 which had 2B=fs may have problems if we had sinusodial signals.
-% So we prefer to have 2B > fs.
-% For signal2 since Nyquist law isn't satisfied we have aliasing , and it makes sinc to be
+% * So we prefer to have 2B > fs.
+% * For signal2 since Nyquist law isn't satisfied we have aliasing , and it makes sinc to be
 % integer. and we know it is 0 if sinc becomes inteer (except in 0). so we see a DC signal.
-% For signal1 Nyquist law isn't satisfied so we see sum of DC and tip of the signal.
-% In conclusion, if we don't satisfy Nyquist law, then we see aliasing if frequency spectrum.
+% * For signal1 Nyquist law isn't satisfied so we see sum of DC and tip of the signal.
+% * In conclusion, if we don't satisfy Nyquist law, then we see aliasing if frequency spectrum.
 %% Homework1_8
 
 N = 256;
