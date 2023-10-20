@@ -160,17 +160,21 @@ grid on;
 % * For signal1 Nyquist law isn't satisfied so we see sum of DC and tip of the signal.
 % * In conclusion, if we don't satisfy Nyquist law, then we see aliasing if frequency spectrum.
 %% Homework1_8
-
+% In this task, we want to see aliasing in frequency spectrum
+% Now we declare needed variables:
 N = 256;
 t = -5:1 / N:5;
 t1 = -5:1 / (2 * N):5;
 t2 = -5:3 / (2 * N):5;
 t3 = -5:3 / N:5;
-
+%%%
+% Here we declare needed signals:
 xt = sinc(2 * t);
 xt1 = sinc(2 * t1);
 xt2 = sinc(2 * t2);
 xt3 = sinc(2 * t3);
+%%%
+% And finally we plot the signals
 figure('Name', 'Original Signal');
 subplot(2, 1, 1)
 plot(t, xt, 'LineWidth', 2);
@@ -230,3 +234,4 @@ xlabel('Time (s)');
 ylabel('Amplitude');
 title('sampled signal');
 grid on;
+
