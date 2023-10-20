@@ -236,7 +236,8 @@ title('sampled signal');
 grid on;
 
 %% Homework1_9
-
+% Here we want to display multi-rate filter bank
+% Firstly we need to declare needed variables
 fs = 2;
 t_max = 256;
 t = -t_max:1 / fs:t_max;
@@ -244,10 +245,13 @@ f1 = 1/16;
 f2 = 5/16;
 f3 = 9/16;
 f4 = 13/16;
+%%%
+% Here we declare signals:
 x = cos(2 * pi * f1 * t) + cos(2 * pi * f2 * t) + cos(2 * pi * f3 * t) + cos(2 * pi * f4 * t);
 FT_x = (1 / fs) * fftshift(fft(x));
 f_axis = linspace(-fs / 2, fs / 2, length(FT_x));
-
+%%%
+% in this cell we plot the declared signals
 figure('Name', 'Fourier Transform of Continuous Time Signal');
 plot(f_axis, abs(FT_x), 'LineWidth', 1.5);
 xlabel('Frequency (Hz)');
@@ -257,6 +261,7 @@ xlim([-1, 1]);
 grid on;
 %%%
 % part b
+
 figure('Name', 'Amplitude and phase 4 analytic filters');
 analy_filter = readmatrix('filters.xls', 'Sheet', 1);
 analy_filter1 = analy_filter(1, :);
