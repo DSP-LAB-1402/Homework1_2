@@ -260,20 +260,25 @@ title('Fourier Transform of Continuous Time Signal');
 xlim([-1, 1]);
 grid on;
 %%%
-% part b
+% In this part we want to read excells data and import it into matlab
 
-figure('Name', 'Amplitude and phase 4 analytic filters');
 analy_filter = readmatrix('filters.xls', 'Sheet', 1);
 analy_filter1 = analy_filter(1, :);
 analy_filter2 = analy_filter(2, :);
 analy_filter3 = analy_filter(3, :);
 analy_filter4 = analy_filter(4, :);
-subplot(4, 2, 1)
+%%%
+% Here we want to declare some variables in order to plot it
 w_axis = linspace(0, pi, 1000);
 N = length(analy_filter1);
 n = 0:N -1;
+%%%
+% Here we declare DTFT of signal:
 DTFT_analy_filter1 = analy_filter1 * exp(-1j * n' * w_axis);
-
+%%%
+% Here we plot some of analytic filters:
+figure('Name', 'Amplitude and phase 4 analytic filters');
+subplot(4, 2, 1)
 plot(w_axis / pi, abs(DTFT_analy_filter1), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -288,12 +293,13 @@ ylabel('Phase');
 xlim([0 1]);
 title('Phase of DTFT analy filter1');
 grid on;
-subplot(4, 2, 3)
+
 w_axis = linspace(0, pi, 1000);
 N = length(analy_filter2);
 n = 0:N -1;
 DTFT_analy_filter2 = analy_filter2 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 3)
 plot(w_axis / pi, abs(DTFT_analy_filter2), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -309,12 +315,12 @@ xlim([0 1]);
 title('Phase of DTFT analy filter2');
 grid on;
 
-subplot(4, 2, 5)
 w_axis = linspace(-0, pi, 1000);
 N = length(analy_filter3);
 n = 0:N -1;
 DTFT_analy_filter3 = analy_filter3 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 5)
 plot(w_axis / pi, abs(DTFT_analy_filter3), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -330,12 +336,12 @@ xlim([0 1]);
 title('Phase of DTFT analy filter3');
 grid on;
 
-subplot(4, 2, 7)
 w_axis = linspace(0, pi, 1000);
 N = length(analy_filter4);
 n = 0:N -1;
 DTFT_analy_filter4 = analy_filter4 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 7)
 plot(w_axis / pi, abs(DTFT_analy_filter4), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -350,19 +356,26 @@ ylabel('Phase');
 xlim([0 1]);
 title('Phase of DTFT analy filter4');
 grid on;
+%%%
+% Now we import datas from 2ns sheet of excell and plot composition filters
 
-figure('Name', 'Amplitude and phase 4 Composition filters');
 Composition_filter = readmatrix('filters.xls', 'Sheet', 2);
 Composition_filter1 = Composition_filter(1, :);
 Composition_filter2 = Composition_filter(2, :);
 Composition_filter3 = Composition_filter(3, :);
 Composition_filter4 = Composition_filter(4, :);
-subplot(4, 2, 1)
+%%%
+% Here we declare some variables for plot:
 w_axis = linspace(0, pi, 1000);
 N = length(Composition_filter1);
 n = 0:N -1;
+% Here we declare DTFT of composition filters:
 DTFT_Composition_filter1 = Composition_filter1 * exp(-1j * n' * w_axis);
-
+%%%
+% 2 of processes from top will be repeated for every subplot
+% plot of filter is written
+figure('Name', 'Amplitude and phase 4 Composition filters');
+subplot(4, 2, 1)
 plot(w_axis / pi, abs(DTFT_Composition_filter1), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -377,12 +390,13 @@ ylabel('Phase');
 xlim([0 1]);
 title('Phase of DTFT Composition filter1');
 grid on;
-subplot(4, 2, 3)
+
 w_axis = linspace(0, pi, 1000);
 N = length(Composition_filter2);
 n = 0:N -1;
 DTFT_Composition_filter2 = Composition_filter2 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 3)
 plot(w_axis / pi, abs(DTFT_Composition_filter2), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -398,12 +412,12 @@ xlim([0 1]);
 title('Phase of DTFT Composition filter2');
 grid on;
 
-subplot(4, 2, 5)
 w_axis = linspace(-0, pi, 1000);
 N = length(Composition_filter3);
 n = 0:N -1;
 DTFT_Composition_filter3 = Composition_filter3 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 5)
 plot(w_axis / pi, abs(DTFT_Composition_filter3), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -419,12 +433,12 @@ xlim([0 1]);
 title('Phase of DTFT Composition filter3');
 grid on;
 
-subplot(4, 2, 7)
 w_axis = linspace(0, pi, 1000);
 N = length(Composition_filter4);
 n = 0:N -1;
 DTFT_Composition_filter4 = Composition_filter4 * exp(-1j * n' * w_axis);
 
+subplot(4, 2, 7)
 plot(w_axis / pi, abs(DTFT_Composition_filter4), 'LineWidth', 1.5);
 xlabel('Frequency (rad/s)');
 ylabel('Amplitude');
@@ -440,7 +454,8 @@ xlim([0 1]);
 title('Phase of DTFT Composition filter4');
 grid on;
 %%%
-% part c
+% In this part we want to do the processing work, like down-sampling and
+% up-sampling of datas and then plot input and output signals
 analy_filter1_out = filter(analy_filter1, 1, x);
 analy_filter2_out = filter(analy_filter2, 1, x);
 analy_filter3_out = filter(analy_filter3, 1, x);
@@ -466,6 +481,8 @@ out_of_filter_bank = Composition_filter1_out + Composition_filter2_out + Composi
 FT_out_of_filter_bank = (1 / fs) * fftshift(fft(out_of_filter_bank));
 f_axis = linspace(-fs / 2, fs / 2, length(FT_out_of_filter_bank));
 
+%%%
+% Here finally we plot input signal and output signal after passing through multi-rate filter bank
 figure('Name', 'Fourier Transform of Continuous Time Signal');
 plot(f_axis, abs(FT_out_of_filter_bank), 'LineWidth', 1.5);
 xlabel('Frequency (Hz)');
@@ -486,3 +503,5 @@ f_axis = linspace(-fs / 2, fs / 2, length(FT_out_of_filter_bank));
 plot(f_axis, abs(FT_out_of_filter_bank), 'LineWidth', 1.5, 'Color', 'b');
 xlim([-1, 1])
 legend('input', 'output'); % Add legend to the figure
+%%%
+% Thanks for your attention
