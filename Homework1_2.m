@@ -42,6 +42,7 @@ legend('Original signal', 'Sampled signal');
 % part 2
 %
 % Here we want to reconstruct original signals, with a specific frequency
+%
 % Now we declare variables for second part of this task
 
 prc_rate = 100;
@@ -74,7 +75,8 @@ legend('Original signal', 'Sampled signal', 'Reconstructed signal')
 %% Homework1_7
 % Here in this task we want to show if we sample signals, what would happen
 % to their frequency spectrum
-% Now we declare variables needed for plot
+%
+% Now we declare variables needed for plot:
 t = -5:0.01:5;
 f1 = 4;
 f2 = 5;
@@ -161,6 +163,7 @@ grid on;
 % * In conclusion, if we don't satisfy Nyquist law, then we see aliasing if frequency spectrum.
 %% Homework1_8
 % In this task, we want to see aliasing in frequency spectrum
+%
 % Now we declare needed variables:
 N = 256;
 t = -5:1 / N:5;
@@ -237,6 +240,7 @@ grid on;
 
 %% Homework1_9
 % Here we want to display multi-rate filter bank
+%
 % Firstly we need to declare needed variables
 fs = 2;
 t_max = 256;
