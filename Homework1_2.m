@@ -7,8 +7,8 @@
 % Moein Nasiri - 9823093
 
 %% Clear the Workspace
-Clear all;
 close all;
+clear all;
 clc;
 
 %% Homework1_6
